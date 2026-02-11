@@ -1,0 +1,83 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+/* ── Base ── */
+html {
+  scroll-behavior: smooth;
+  scrollbar-width: thin;
+  scrollbar-color: #2a2d33 #0b0c0e;
+}
+
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: #0b0c0e; }
+::-webkit-scrollbar-thumb { background: #2a2d33; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #3a3d44; }
+
+::selection {
+  background: #0ab71a33;
+  color: #0ab71a;
+}
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: #0b0c0e;
+  color: #c8c9cc;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── Noise texture overlay ── */
+.noise-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  opacity: 0.015;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 200px;
+}
+
+/* ── Section reveal animation ── */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── Project image placeholder ── */
+.project-img-placeholder {
+  background: #16181c;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ── Dashboard transitions ── */
+.dash-fade-in {
+  animation: dashFade 0.3s ease forwards;
+}
+
+@keyframes dashFade {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Input focus ring ── */
+input:focus, textarea:focus, select:focus {
+  outline: none;
+  border-color: #0ab71a !important;
+  box-shadow: 0 0 0 1px #0ab71a44;
+}
+
+/* ── Skill bar animation ── */
+.skill-fill {
+  transition: width 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
