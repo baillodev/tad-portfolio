@@ -4,9 +4,10 @@ import { useState } from 'react';
 import { Send, Mail, Phone, MapPin, ArrowUpRight, Loader2, CheckCircle2, AlertCircle } from 'lucide-react';
 import Socials from '@/components/portfolio/Socials';
 
-// Clé publique Web3Forms. Récupère la tienne (gratuit, 30s) sur https://web3forms.com
-// puis mets-la dans un fichier .env.local :  NEXT_PUBLIC_WEB3FORMS_KEY=ta-cle
-const WEB3FORMS_KEY = process.env.NEXT_PUBLIC_WEB3FORMS_KEY || '';
+// Clé publique Web3Forms (elle peut rester dans le code, ce n'est pas un secret).
+// Créez-la gratuitement sur https://web3forms.com en entrant l'adresse email
+// qui doit RECEVOIR les messages du formulaire, puis collez la clé ci-dessous.
+const WEB3FORMS_KEY = 'bb8bf44e-6457-4f3d-b6bd-b07e732be73b';
 
 export default function Contact({ profile }) {
   // status: 'idle' | 'sending' | 'success' | 'error'
@@ -17,7 +18,7 @@ export default function Contact({ profile }) {
     e.preventDefault();
     const form = e.target;
 
-    if (!WEB3FORMS_KEY) {
+    if (!WEB3FORMS_KEY || WEB3FORMS_KEY.startsWith('REMPLACER')) {
       setStatus('error');
       setError("Le formulaire n'est pas encore configuré. Écris-moi directement par email.");
       return;

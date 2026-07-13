@@ -41,12 +41,14 @@ reflétées sur le portfolio public (après rafraîchissement de la page).
 Le formulaire envoie les messages par email via [Web3Forms](https://web3forms.com)
 (gratuit). Pour l'activer :
 
-1. Récupère une **Access Key** gratuite sur web3forms.com (entre ton email).
-2. Ajoute la variable d'environnement `NEXT_PUBLIC_WEB3FORMS_KEY` :
-   - en local : crée un fichier `.env.local` (voir `.env.example`) ;
-   - sur Vercel : *Settings → Environment Variables*, puis redéploie.
+1. Va sur web3forms.com et entre **l'adresse email qui doit recevoir les messages**.
+2. Copie l'**Access Key** reçue.
+3. Colle-la dans la constante `WEB3FORMS_KEY` en haut de
+   [components/portfolio/Contact.jsx](components/portfolio/Contact.jsx).
 
-Sans cette clé, le formulaire affiche un message invitant à écrire par email.
+La clé est publique (pas un secret) : elle peut rester dans le code, aucun
+fichier `.env` ni redéploiement manuel n'est nécessaire. Tant qu'elle n'est pas
+renseignée, le formulaire affiche un message invitant à écrire par email.
 
 ## Réseaux sociaux
 
