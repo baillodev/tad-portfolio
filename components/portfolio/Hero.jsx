@@ -4,7 +4,7 @@ import { ArrowDown } from 'lucide-react';
 
 export default function Hero({ profile }) {
   return (
-    <section className="min-h-screen flex items-center justify-center relative px-6">
+    <section className="min-h-screen flex items-center justify-center relative px-6 pt-28 pb-16">
       {/* Subtle grid background */}
       <div
         className="absolute inset-0 opacity-[0.03]"
@@ -16,6 +16,19 @@ export default function Hero({ profile }) {
       />
 
       <div className="relative text-center max-w-3xl mx-auto">
+        {/* Portrait */}
+        {profile.photo && (
+          <div className="mb-8 flex justify-center">
+            <div className="relative w-32 h-32 md:w-36 md:h-36 rounded-full p-[2px] bg-gradient-to-br from-accent/60 to-accent/10">
+              <img
+                src={profile.photo}
+                alt={profile.name}
+                className="w-full h-full rounded-full object-cover object-top border-2 border-dark-950"
+              />
+            </div>
+          </div>
+        )}
+
         {/* Status badge */}
         <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-dark-600 bg-dark-800/60 mb-10">
           <span className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
